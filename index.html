@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Информационная система "Калькулятор"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://images.icon-icons.com/2474/PNG/512/education_calculator_maths_math_icon_149699.png">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Информационная система "Калькулятор" <br> <div class="ya">Ковган Александр</div></div>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">Главная</a></li>
+                    <li><a href="#" onclick="showSection('calculators')">Калькуляторы</a></li>
+                    <li><a href="#" onclick="showSection('feedback')">Обратная связь</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <aside class="sidebar">
+                <h3>Меню</h3>
+                <ul>
+                    <li><a href="#" onclick="showSection('home')">О системе</a></li>
+                    <li><a href="#" onclick="showSection('calculators')">Виды калькуляторов</a></li>
+                    <li><a href="#" onclick="showFinancialCalculator()">Финансовые расчеты</a></li>
+                    <li><a href="#" onclick="showEngineeringCalculator()">Инженерные расчеты</a></li>
+                    <li><a href="#" onclick="showStatisticalCalculator()">Статистические анализы</a></li>
+                    <li><a href="#" onclick="showSection('feedback')">Обратная связь</a></li>
+                </ul>
+            </aside>
+            
+            <main class="content" id="content">
+                <!-- Домашняя страница -->
+                <div id="home-section">
+                    <h2>О системе "Калькулятор"</h2>
+                    <p>Система "Калькулятор" предназначена для предоставления пользователям возможности быстро и точно выполнять различные виды расчетов в онлайн-режиме.</p>
+                    <p>Основная цель системы – обеспечить удобный инструмент для выполнения расчетов, автоматизировать процессы обработки данных и повысить эффективность работы пользователей за счет быстрого получения результатов.</p>
+                    
+                    <h3>Целевая аудитория</h3>
+                    <ul>
+                        <li>Студенты и учащиеся, использующие систему для учебных целей</li>
+                        <li>Преподаватели и специалисты, применяющие систему для профессиональных расчетов</li>
+                        <li>Администраторы, обеспечивающие поддержку и обновление системы</li>
+                    </ul>
+                    
+                    <div class="calculator-types">
+                        <div class="calculator-card" onclick="showFinancialCalculator()">
+                            <h3>Финансовые калькуляторы</h3>
+                            <p>Кредиты, вклады, инвестиции и другие финансовые расчеты</p>
+                        </div>
+                        <div class="calculator-card" onclick="showEngineeringCalculator()">
+                            <h3>Инженерные расчеты</h3>
+                            <p>Технические и строительные вычисления</p>
+                        </div>
+                        <div class="calculator-card" onclick="showStatisticalCalculator()">
+                            <h3>Статистические анализы</h3>
+                            <p>Анализ данных, статистические показатели</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Раздел с калькуляторами -->
+                <div id="calculators-section" style="display: none;">
+                    <h2>Виды калькуляторов</h2>
+                    <p>Выберите нужный тип калькулятора для выполнения расчетов:</p>
+                    
+                    <div class="calculator-types">
+                        <div class="calculator-card" onclick="showFinancialCalculator()">
+                            <h3>Финансовые калькуляторы</h3>
+                            <p>Кредиты, вклады, инвестиции и другие финансовые расчеты</p>
+                        </div>
+                        <div class="calculator-card" onclick="showEngineeringCalculator()">
+                            <h3>Инженерные расчеты</h3>
+                            <p>Технические и строительные вычисления</p>
+                        </div>
+                        <div class="calculator-card" onclick="showStatisticalCalculator()">
+                            <h3>Статистические анализы</h3>
+                            <p>Анализ данных, статистические показатели</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Финансовый калькулятор -->
+                <div id="financial-calculator" style="display: none;">
+                    <h2>Финансовый калькулятор</h2>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="calc-type">Тип расчета:</label>
+                            <select id="calc-type">
+                                <option value="credit">Кредитный калькулятор</option>
+                                <option value="deposit">Депозитный калькулятор</option>
+                                <option value="investment">Инвестиционный калькулятор</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="amount">Сумма:</label>
+                            <input type="number" id="amount" placeholder="Введите сумму">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="period">Срок (мес.):</label>
+                            <input type="number" id="period" placeholder="Введите срок">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rate">Процентная ставка (%):</label>
+                            <input type="number" id="rate" placeholder="Введите ставку">
+                        </div>
+                        
+                        <button onclick="calculateFinancial()">Рассчитать</button>
+                        
+                        <div class="result" id="financial-result">
+                            <h3>Результаты расчета:</h3>
+                            <div id="financial-result-content"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Инженерный калькулятор -->
+                <div id="engineering-calculator" style="display: none;">
+                    <h2>Инженерный калькулятор</h2>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="eng-calc-type">Тип расчета:</label>
+                            <select id="eng-calc-type">
+                                <option value="area">Расчет площади</option>
+                                <option value="volume">Расчет объема</option>
+                                <option value="conversion">Конвертация единиц</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="param1">Параметр 1:</label>
+                            <input type="number" id="param1" placeholder="Введите значение">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="param2">Параметр 2 (если требуется):</label>
+                            <input type="number" id="param2" placeholder="Введите значение">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="param3">Параметр 3 (если требуется):</label>
+                            <input type="number" id="param3" placeholder="Введите значение">
+                        </div>
+                        
+                        <button onclick="calculateEngineering()">Рассчитать</button>
+                        
+                        <div class="result" id="engineering-result">
+                            <h3>Результаты расчета:</h3>
+                            <div id="engineering-result-content"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Статистический калькулятор -->
+                <div id="statistical-calculator" style="display: none;">
+                    <h2>Статистический калькулятор</h2>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="stat-calc-type">Тип анализа:</label>
+                            <select id="stat-calc-type">
+                                <option value="average">Средние значения</option>
+                                <option value="correlation">Корреляция</option>
+                                <option value="regression">Регрессионный анализ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="data-input">Введите данные (через запятую):</label>
+                            <input type="text" id="data-input" placeholder="Например: 5, 10, 15, 20">
+                        </div>
+                        
+                        <div class="form-group" id="second-data-group" style="display: none;">
+                            <label for="data-input2">Введите вторую выборку данных (через запятую):</label>
+                            <input type="text" id="data-input2" placeholder="Например: 10, 20, 30, 40">
+                        </div>
+                        
+                        <button onclick="calculateStatistical()">Рассчитать</button>
+                        
+                        <div class="result" id="statistical-result">
+                            <h3>Результаты анализа:</h3>
+                            <div id="statistical-result-content"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Обратная связь -->
+                <div id="feedback-section" style="display: none;">
+                    <h2>Обратная связь</h2>
+                    <p>Если у вас есть вопросы или предложения по работе системы, пожалуйста, заполните форму ниже:</p>
+                    
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label for="name">Ваше имя:</label>
+                            <input type="text" id="name" placeholder="Введите ваше имя">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" placeholder="Введите ваш email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Сообщение:</label>
+                            <textarea id="message" rows="5" placeholder="Введите ваше сообщение"></textarea>
+                        </div>
+                        
+                        <button onclick="sendFeedback()">Отправить</button>
+                        
+                        <div class="result" id="feedback-result" style="display: none;">
+                            <p>Спасибо за ваше сообщение! Мы рассмотрим его в ближайшее время.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Контакты поддержки</h3>
+                    <p>Email: support@calculator-system.ru</p>
+                    <p>Телефон: +7 (123) 456-78-90</p>
+                    <p>Часы работы: Пн-Пт, 9:00-18:00</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    
+    
+    <script src="main.js">
+        
+    </script>
+</body>
+</html>
